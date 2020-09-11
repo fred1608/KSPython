@@ -12,7 +12,7 @@ pip install KSPython
 
 ## Design Goals
 
-KSPython was developed to be friendly to people new to python, and who are still leaning the language. While also providing a powerful tool to help experience users make fast designs.
+KSPython was developed to be friendly to people new to python, and who are still learning the language. While also providing a powerful tool to help experience users make fast designs.
 
 I also envision this tool to be connected with optimization and plotting tools in the future in order to provide even more usability.
 
@@ -26,7 +26,7 @@ import KSPython as ksp
 from KSPython.RocketFuelTankParts import FLT400, FLT800
 from KSPython.LiquidEngineParts import LVT45, LVT30
 ```
-We use the library has 3 basic elements, parts, stages and rockets. Parts are usually imported and added to an stage, a stage is then added to the rocket. 
+The library has 3 basic elements, parts, stages and rockets. Parts are usually imported and added to an stage, a stage is then added to the rocket. 
 
 ```python
 rocket = ksp.Rocket('Basic Rocket Example')
@@ -34,14 +34,14 @@ main_stage = ksp.Stage()
 lift_stages = ksp.Stage()
 ```
 
-The main rocket stage is composed by an LV-T45 "Swivel" engine, a FL-T800 fuel tank and a Mk1 Command pod. Those two first parts were added onto the stage by means of the add_parts function, while the command pod, being just an static object for the purpose of simulation, was added by simply adding his weight.
+The main rocket stage is composed by an LV-T45 "Swivel" engine, a FL-T800 fuel tank and a Mk1 Command pod. Those two first parts were added onto the stage by means of the add_parts function, while the command pod, being just an static object for the purpose of simulation, was added by simply adding his mass.
 
 ```python
 main_stage.add_parts([FLT800, LVT45])
 main_stage.add_extra_mass(0.84) # Mk1 Command Pod
 ```
 
-The same process is repeated for the other stage. Note that this rocket is an asparagus configuration of 6 boosters. Each stage is composed of two boosters, those can be added together.
+The same process is repeated for the other stage. Note that this rocket is an asparagus configuration with 6 boosters. Each stage is composed of two boosters, those can be added together.
 
 ```python
 lift_stages.add_parts([FLT400]*2 + [LVT30]*2)
@@ -49,9 +49,9 @@ lift_stages.add_extra_mass(0.05*2) # FTX-2 Fuel Duct
 lift_stages.add_extra_mass(0.05*2) # TT-70 Decoupler
 ```
 
-The stages can then be added to a rocket. It is very important to notice that they must be added in the order that they will fire, from first stage to the last. Since the rocket uses 6 boosters, the list stage - which has 2 boosters - was added 3 times.
+The stages can then be added to a rocket. It is very important to notice that they must be added in the order that they will fire, from first stage to the last. Since the rocket uses 6 boosters, the lift stage - which has 2 boosters - was added 3 times.
 
-By default, engines fire once their own stage is initiated, but they can be scheduled to be fired before their stage. In this example, all engines all engines are programed to fire simultaneously at liftoff. Also, it is important to note that fuel automatically flows from one stage to the next if it can. How to prevent fuel from flowing between two stages firing simultaneously is shown in example 2.
+By default, engines fire once their own stage is initiated, but they can be scheduled to be fired before their stage. In this example, all engines are programed to fire simultaneously at liftoff. Also, it is important to note that fuel automatically flows from one stage to the next if it can. How to prevent fuel from flowing between two stages firing simultaneously is shown in example 2.
 
 ```python
 rocket.add_stages([lift_stages]*3 + [main_stage])
