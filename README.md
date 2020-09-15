@@ -113,7 +113,7 @@ Engine burn time measured at full power.
 
 ```
 
-2) Comparison between similar rockets, but with different fuel connections.
+2) Comparison between similar rockets, but with different fuel connections and booster efficiency.
 
 ```python
 import KSPython as ksp
@@ -170,6 +170,62 @@ rocket5.rem_fuel_flow(1)
 rocket5.generate_report()
 ```
 Note: method *Rocket.rem_fuel_flow(stage_num)* cancels the flow of fuel between the stage *stage_num* and the next stage.
+
+3) Designing a heavy lifter platform.
+
+In this design, I'm looking for a lifter platform capable of howling 50 tons of cargo to low kerbin orbit, but I'm also interested in other delta-V values for different cargos. It is important to note that this example uses matplotlib.
+
+The start of the code is similar to the last examples, but with different parts. That said, it involved a good deal of trial and error. Here just the final version is shown, but parts can be easily switched and several stages can be made and swapped in the rocket to facilitate prototyping.
+
+```python
+import KSPython as ksp
+from KSPython.RocketFuelTankParts import X20016, Jumbo64
+from KSPython.LiquidEngineParts import REL10, REM3
+import matplotlib.pyplot as plt
+
+rocket = ksp.Rocket('Heavy lifter')
+
+final_stage = ksp.Stage()
+main_stage = ksp.Stage()
+asp_stages = ksp.Stage()
+
+
+final_stage.add_parts([X20016,REL10])
+main_stage.add_parts([Jumbo64,Jumbo64,REM3])
+asp_stages.add_parts([Jumbo64,REM3]*2)
+
+rocket.add_stages([asp_stages, asp_stages, asp_stages, main_stage, final_stage])
+```
+ To accomplish both goals of designing a rocket to get 50 tons to LKO, but also measuring it's capabilities to other missions, I've decided to plot a delta-V graph. To do so, I've used the library to calculate the delta-V value for different payloads and insert this into matplolib.
+
+```python
+dVs = []
+payloads = range(250)
+for mass in payloads:
+    rocket.change_payload(mass)
+    dVs.append(rocket.adjusted_dV())
+
+plt.plot(payloads, dVs)
+plt.xlabel('Payload [ton]')
+plt.ylabel('Delta-V [m/s]')
+plt.grid()
+plt.show()
+```
+
+The resulting graph can be seen here:
+
+![heavy_lift_graph](Figs/heavy_lifter.png)
+
+To bring cargo to LKO, it is required around 3400 m/s of delta-V. I aimed at 4000 to have some safety margin. Which is above the delta-V value for 50 tons in the graph.
+
+Finally, it is important to verify that the rocket has a thrust to weight ratio capable of lifting 50 Tons.
+
+```python
+rocket.change_payload(50)
+rocket.generate_report()
+```
+
+
 
 ## To do
 
