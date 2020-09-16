@@ -229,9 +229,10 @@ rocket.generate_report()
 
 ## To do
 
-* Documentation
-* Create more examples
 * Provide support for Xenon parts
+* Make it possible to include Nerv engine
+* Add unit tests
+
 
 
 If you're interesting in helping this project as a collaborator, feel free to send an email to: fred1693@hotmail.com
