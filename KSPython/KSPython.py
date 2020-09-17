@@ -33,11 +33,11 @@ class Part:
 
     Parameters
         ----------
-        name : `string`
+        name - `string`
             The name of the part.
-        mass : `float/int`
+        mass - `float/int`
             The mass of the part.
-        cost : `float/int`
+        cost - `float/int`
             Part cost.
 
 
@@ -58,13 +58,13 @@ class RocketFuelTank(BasicTank):
 
     Parameters
         ----------
-        name : `string`
+        name - `string`
             The name of the part.
-        mass_full : `float/int`
+        mass_full - `float/int`
             The mass of the part when it is full.
-        mass_empty : `float/int`
+        mass_empty - `float/int`
             The mass of the part when it is empty.
-        cost : `float/int`
+        cost - `float/int`
             Part cost.
     
     Example
@@ -97,19 +97,19 @@ class LiquidEngine(Engine):
 
     Parameters
         ----------
-        name : `string`
+        name - `string`
             The name of the part.
-        mass : `float/int`
+        mass - `float/int`
             The mass of the part.
-        cost : `float/int`
+        cost - `float/int`
             Part cost.
-        thrust_atm : `float/int`
+        thrust_atm - `float/int`
             Atmospheric engine thrust, in kN.
-        thrust_vac : `float/int`
+        thrust_vac - `float/int`
             Vacuum engine thrust, in kN.
-        isp_atm : `float/int`
+        isp_atm - `float/int`
             Atmospheric engine ISP, in s.
-        isp_vac : `float/int`
+        isp_vac - `float/int`
             Vacuum engine ISP, in s.
     
     Example
@@ -129,21 +129,21 @@ class SolidEngine(Engine):
 
     Parameters
         ----------
-        name : `string`
+        name - `string`
             The name of the part.
-        mass_full : `float/int`
+        mass_full - `float/int`
             The mass of the part when it is full.
-        mass_empty : `float/int`
+        mass_empty - `float/int`
             The mass of the part when it is empty.
-        cost : `float/int`
+        cost - `float/int`
             Part cost.
-        thrust_atm : `float/int`
+        thrust_atm - `float/int`
             Atmospheric engine thrust, in kN.
-        thrust_vac : `float/int`
+        thrust_vac - `float/int`
             Vacuum engine thrust, in kN.
-        isp_atm : `float/int`
+        isp_atm - `float/int`
             Atmospheric engine ISP, in s.
-        isp_vac : `float/int`
+        isp_vac - `float/int`
             Vacuum engine ISP, in s.
     
     Example
@@ -186,7 +186,7 @@ class Stage:
 
         Parameters
             ----------
-            part : `part`
+            part - `part`
                 Part to be added to a stage.
 
         """
@@ -202,7 +202,7 @@ class Stage:
 
         Parameters
             ----------
-            parts : `list of parts`
+            parts - `list of parts`
                 Parts to be added to a stage.
 
         """
@@ -228,7 +228,7 @@ class Stage:
 
         Parameters
             ----------
-            mass : `int/float`
+            mass - `int/float`
                 Mass to be added [ton].
 
         """
@@ -240,7 +240,7 @@ class Stage:
 
         Parameters
             ----------
-            cost : `int/float`
+            cost - `int/float`
                 Cost to be added.
 
         """
@@ -252,7 +252,7 @@ class Stage:
 
         Return
             ----------
-            mass_sum : `float`
+            mass_sum - `float`
                 Total mass of full stage [ton].
 
         """
@@ -267,7 +267,7 @@ class Stage:
 
         Return
             ----------
-            cost_sum : `float`
+            cost_sum - `float`
                 Total cost of stage.
 
         """
@@ -282,7 +282,7 @@ class Stage:
 
         Return
             ----------
-            mass_sum : `float`
+            mass_sum - `float`
                 Total mass of empty stage [ton].
 
         """
@@ -300,9 +300,9 @@ class Stage:
 
         Return
             ----------
-            thrust : `float`
+            thrust - `float`
                 Relative thrust for all engines of this stage [kN].
-            isp : `float`
+            isp - `float`
                 Relative ISP value for all engines of this stage [s]. 
 
         """
@@ -365,7 +365,7 @@ class Rocket:
 
     Parameter
         ----------
-        name (optional) : `string`
+        name (optional) - `string`
             Name of the rocket.
 
     """
@@ -384,7 +384,7 @@ class Rocket:
 
         Parameters
             ----------
-            stage : `stage`
+            stage - `stage`
                 Stage to be added to the rocket.
 
         """
@@ -407,7 +407,7 @@ class Rocket:
 
         Parameters
             ----------
-            stages : `list of stages`
+            stages - `list of stages`
                 Stages to be added to the rocket.
 
         """
@@ -420,7 +420,7 @@ class Rocket:
 
         Return
             ----------
-            num_stage : `int`
+            num_stage - `int`
                 Number of stages in a rocket.
 
         """
@@ -432,7 +432,7 @@ class Rocket:
 
         Parameters
             ----------
-            payload : `int/float`
+            payload - `int/float`
                 Payload to be added to a rocket [ton].
 
         """
@@ -448,18 +448,18 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            stage_max : `int`
+            stage_max - `int`
                 Maximum stage to which results will be brought (including stage_max).
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            thrust_list : `list of thrusts`
+            thrust_list - `list of thrusts`
                 List the thrust of the engines [kN]. 
-            isp_list : `list of ISPs`
+            isp_list - `list of ISPs`
                 List the ISP of the engines [s].             
 
         """
@@ -492,14 +492,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            burn_time : `float`
+            burn_time - `float`
                 Total burn time [kN].             
 
         """
@@ -519,16 +519,16 @@ class Rocket:
 
         Parameters
             ----------
-            stage_ini : `int`
+            stage_ini - `int`
                 Initial stage.
-            stage_end : `int`
+            stage_end - `int`
                 Final stage.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            total_time : `float`
+            total_time - `float`
                 Total time between stages [s].             
 
         """
@@ -552,14 +552,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            isp : `float`
+            isp - `float`
                 Relative ISP of engines [s].             
 
         """
@@ -577,16 +577,16 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            total_thrust : `float`
+            total_thrust - `float`
                 Total thrust of engines [kN]. 
-            isp : `float`
+            isp - `float`
                 Relative ISP of engines [s].             
 
         """
@@ -609,9 +609,9 @@ class Rocket:
 
         Parameters
             ----------
-            stage_fire : `int`
+            stage_fire - `int`
                 Stage to fire engines.
-            stage_present : `int`
+            stage_present - `int`
                 Stage which is to fire their engines.           
 
         """
@@ -639,7 +639,7 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage where the operation will be executed.
 
 
@@ -655,12 +655,12 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
 
         Return
             ----------
-            stage_fire : `int`
+            stage_fire - `int`
                 Stage where engines fire.            
 
         """
@@ -679,9 +679,9 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            mass_loss : `float`
+            mass_loss - `float`
                 Mass to be verified if greater than fuel mass.
 
         """
@@ -697,14 +697,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            mass_loss : `float`
+            mass_loss - `float`
                 Total mass lost by the stage [ton].              
 
         """
@@ -726,14 +726,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            total_mass_lost : `float`
+            total_mass_lost - `float`
                 Total mass lost by the rocket [ton].             
 
         """
@@ -758,14 +758,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            total_mass_lost : `float`
+            total_mass_lost - `float`
                 Total mass lost by the rocket [ton].             
 
         """
@@ -781,14 +781,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            upper_mass : `float`
+            upper_mass - `float`
                 Upper mass of the rocket [ton].
         """ 
         upper_mass = sum([stage.calculate_full_mass() for stage in self.stages[(stage_num+1):]]) + self.payload
@@ -800,14 +800,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            dV : `float`
+            dV - `float`
                 Delta V of the stage [m/s].            
 
         """
@@ -826,12 +826,12 @@ class Rocket:
 
         Parameters
             ----------
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            dV : `float`
+            dV - `float`
                 Delta V of the rocket [m/s].            
 
         """
@@ -847,13 +847,13 @@ class Rocket:
 
         Parameters
             ----------
-            dV_out : `int/float`
+            dV_out - `int/float`
                 Delta-V required to leave the atmosphere of a given body [m/s]. 
                     * 2500 - Kerbin 
 
         Return
             ----------
-            dV : `float`
+            dV - `float`
                 Delta V of the rocket [m/s].            
 
         """
@@ -868,7 +868,7 @@ class Rocket:
 
         Return
             ----------
-            total_mass : `float`
+            total_mass - `float`
                 Total mass of the rocket [ton].            
 
         """
@@ -883,7 +883,7 @@ class Rocket:
 
         Return
             ----------
-            total_cost : `float`
+            total_cost - `float`
                 Total cost of the rocket.            
 
         """
@@ -898,14 +898,14 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            thrust : `float`
+            thrust - `float`
                 Total thrust of engines [kN].            
 
         """
@@ -920,16 +920,16 @@ class Rocket:
 
         Parameters
             ----------
-            stage_num : `int`
+            stage_num - `int`
                 Stage to be analyzed.
-            g : `float`
+            g - `float`
                 Gravity (default for Kerbin).
-            loc : `{'atm', 'vac'}`
+            loc - `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            twr : `float`
+            twr - `float`
                 Thrust to weight ratio.         
 
         """
@@ -946,7 +946,7 @@ class Rocket:
 
         Parameters
             ----------
-            g : `float`
+            g - `float`
                 Gravity (default for Kerbin).             
 
         """
