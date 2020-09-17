@@ -195,6 +195,10 @@ main_stage.add_parts([Jumbo64,Jumbo64,REM3])
 asp_stages.add_parts([Jumbo64,REM3]*2)
 
 rocket.add_stages([asp_stages, asp_stages, asp_stages, main_stage, final_stage])
+
+rocket.schedule_engine(0,1)
+rocket.schedule_engine(0,2)
+rocket.schedule_engine(0,3)
 ```
  To accomplish both goals of designing a rocket to get 50 tons to LKO, but also measuring it's capabilities to other missions, I've decided to plot a delta-V graph. To do so, I've used the library to calculate the delta-V value for different payloads and insert this into matplolib.
 
