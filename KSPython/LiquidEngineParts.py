@@ -5,7 +5,7 @@ This submodule is responsible to house liquid rocket engines to be used on simul
 Note: 
 
 * Id Name is the name assigned to the part to be imported and inserted into the code.
-* LVN 'Nerv' Engine is not-supported, as the calculation currently does not differentiate between oxidizer and liquid fuel.
+* LVN 'Nerv' Engine is not-supported yet, as the calculation currently does not differentiate between oxidizer and liquid fuel.
 * KR12 is divided into two parts, one for engine and one for fuel, both parts must be added if using it.
 
 +------------+-------------------------------------+------------+-----------+------------+------------+---------+---------+

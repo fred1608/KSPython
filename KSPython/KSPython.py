@@ -106,11 +106,11 @@ class LiquidEngine(Engine):
         thrust_atm : `float/int`
             Atmospheric engine thrust, in kN.
         thrust_vac : `float/int`
-            Vaccum engine thrust, in kN.
+            Vacuum engine thrust, in kN.
         isp_atm : `float/int`
             Atmospheric engine ISP, in s.
         isp_vac : `float/int`
-            Vaccum engine ISP, in s.
+            Vacuum engine ISP, in s.
     
     Example
         -------
@@ -118,7 +118,7 @@ class LiquidEngine(Engine):
 
     Note
         ----------
-        * Basic parts have already been inserted through LiquidEngineParts, but new ones can be made by utilising this class.
+        * Basic parts have already been inserted through LiquidEngineParts, but new ones can be made by utilizing this class.
 
     """
     def __init__(self, name, mass, cost, thrust_atm, thrust_vac, isp_atm, isp_vac): 
@@ -140,11 +140,11 @@ class SolidEngine(Engine):
         thrust_atm : `float/int`
             Atmospheric engine thrust, in kN.
         thrust_vac : `float/int`
-            Vaccum engine thrust, in kN.
+            Vacuum engine thrust, in kN.
         isp_atm : `float/int`
             Atmospheric engine ISP, in s.
         isp_vac : `float/int`
-            Vaccum engine ISP, in s.
+            Vacuum engine ISP, in s.
     
     Example
         -------
@@ -160,9 +160,9 @@ class SolidEngine(Engine):
         self.mass_empty = _number_check(mass_empty)
 
 class Stage:
-    """Stage class, that incorporate parts and is inserted into a rocket.
+    """The stage class incorporates parts and is inserted into a rocket.
 
-    The stage class is one of the basic classes of this project. It is used as a collection of parts, 
+    It is one of the basic classes of this project. It is used as a collection of parts, 
     and represents a section of the rocket.
 
     In the stage, a form of engine and fuel must be present. Other parts can be represented as extra mass and
@@ -224,7 +224,7 @@ class Stage:
 
     def add_extra_mass(self, mass):
         """
-        Add extra mass to an stage. Used mainly to add the other parts that are not engines or fuel tanks.
+        Add extra mass to an stage. Used mainly to add other parts that are not engines or fuel tanks.
 
         Parameters
             ----------
@@ -236,7 +236,7 @@ class Stage:
 
     def add_extra_cost(self, cost):
         """
-        Add extra cost to an stage. Used mainly to add the other parts that are not engines or fuel tanks.
+        Add extra cost to an stage. Used mainly to add other parts that are not engines or fuel tanks.
 
         Parameters
             ----------
@@ -248,7 +248,7 @@ class Stage:
 
     def calculate_full_mass(self):
         """
-        Calculate the mass of the stage while it is full.
+        Calculate the mass of the stage when it is full.
 
         Return
             ----------
@@ -278,7 +278,7 @@ class Stage:
 
     def calculate_empty_mass(self):
         """
-        Calculate the mass of the stage while it is empty.
+        Calculate the mass of the stage when it is empty.
 
         Return
             ----------
@@ -303,7 +303,7 @@ class Stage:
             thrust : `float`
                 Relative thrust for all engines of this stage [kN].
             isp : `float`
-                Relative ISP value for all engies of this stage [s]. 
+                Relative ISP value for all engines of this stage [s]. 
 
         """
         _loc_check(loc)
@@ -323,7 +323,7 @@ class Stage:
 
     def _check_for_parts_not_allowed_together(self):
         """
-        Raises an expection if two parts that are not allowed together are placed in the same stage.
+        Raises an exception if two parts that are not allowed together are placed in the same stage.
 
         """
         fuels = {'liquid': False, 'solid': False}
@@ -356,12 +356,12 @@ class Stage:
 class Rocket:
     """Rocket class, it is where most of the calculations occur, it also receives stages as inputs.
 
-    The rocket activates each stage in order that it has been inserted, burning its fuel, turning its engine on and discarding older stages.
+    The rocket activates each stage in the order that they have been inserted, burning its fuel, turning its engine on and discarding older stages.
 
     It is possible to have engines fire before their stage by using *schedule_engine* method. Fuel will not be consumed by
     the later stages, and will only be used by the one being fired (assuming they share a type and it is possible to do so).
 
-    If ths is not the intended operation, fuel flow can also be restricted. 
+    If this is not the intended operation, fuel flow can also be restricted. 
 
     Parameter
         ----------
@@ -442,23 +442,23 @@ class Rocket:
     # stage_max limits this function to be performed only to stages smaller or equal than it
     def performance_engines_firing(self, stage_num, stage_max = None, loc = 'atm'):
         """
-        This method gets engine peformance from all engines that are firing together in more complex stagings, at the time of stage_num.
+        This method gets engine performance from all engines that are firing together in more complex stagings, at the time of stage_num.
         
         It can also be restricted to return only values up to a limit stage, defined by stage_max. This is useful when calculating fuel flow with fuel restrictions. 
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             stage_max : `int`
-                Maximum stage to which results will be brough (inclusing stage_max).
+                Maximum stage to which results will be brought (including stage_max).
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
         Return
             ----------
-            thrust_list : `list of thusts`
-                List the thurst of the engines [kN]. 
+            thrust_list : `list of thrusts`
+                List the thrust of the engines [kN]. 
             isp_list : `list of ISPs`
                 List the ISP of the engines [s].             
 
@@ -487,13 +487,13 @@ class Rocket:
         """
         This method calculates the total time an stage will spend burning at maximum thrust.
 
-        Note that if an engine was started before its stage started, and it wasn't able to receive fuel from upper stages,
+        Note that if an engine was started before its stage, and it wasn't able to receive fuel from other stages,
         the fuel lost before it started will be considered in decreasing total burn time.
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -553,7 +553,7 @@ class Rocket:
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -578,7 +578,7 @@ class Rocket:
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -631,10 +631,10 @@ class Rocket:
 
     def rem_fuel_flow(self, stage_num):
         """
-        Retrict the fuel flow in the rocket between the assigned stage and next one.
+        Restrict the fuel flow in the rocket between the assigned stage and next one.
 
-        In normal operation, fuel will always be passed from smaller stages to the next automatically when applicable.
-        Using this will prevent the rocket from moving fuel upstage. This action is not required when fuel flow is impossible,
+        In normal operation, fuel will always be passed from smaller stages to the upper ones automatically when applicable.
+        Using this will prevent the rocket from moving fuel upstage. Setting this is not required when fuel flow is impossible,
         for example when using solid rocket boosters.
 
         Parameters
@@ -651,12 +651,12 @@ class Rocket:
 
     def find_when_engine_fired(self,stage_num):
         """
-        If the stage being analysed has been scheduled to fire, return when. Else it returns itself.
+        If the stage being analyzed has been scheduled to fire, return when. Else it returns itself.
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
 
         Return
             ----------
@@ -680,9 +680,9 @@ class Rocket:
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             mass_loss : `float`
-                Mass to be verified if greather than fuel mass.
+                Mass to be verified if greater than fuel mass.
 
         """
         fuel_mass = self.stages[stage_num].calculate_full_mass() - self.stages[stage_num].calculate_empty_mass()
@@ -698,7 +698,7 @@ class Rocket:
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -722,12 +722,12 @@ class Rocket:
     # return all mass lost in all stages after stage_num at current stage_num time 
     def total_prestage_mass_loss(self,stage_num, loc = 'atm'):
         """
-        Calculates how much mass the whole rocket has lost in stages above the stage being analysed when it started.
+        Calculates how much mass the whole rocket has lost in stages above the stage being analyzed when at the stage's start.
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -754,12 +754,12 @@ class Rocket:
     # rocket mass lost at the end of an stage is equivalent to the mass lost at the start of the next
     def total_poststage_mass_loss(self, stage_num, loc = 'atm'):
         """
-        Calculates how much mass the whole rocket has lost in stages above the stage being analysed when the stage ended.
+        Calculates how much mass the whole rocket has lost in stages above the stage being analyzed at the stage's end.
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -777,12 +777,12 @@ class Rocket:
     # mass above stage_num
     def calculate_upper_mass(self,stage_num):
         """
-        Total mass of the rocket above the stage being analysed (without including it). 
+        Total mass of the rocket above the stage being analyzed (without including it). 
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -801,7 +801,7 @@ class Rocket:
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -843,7 +843,7 @@ class Rocket:
 
     def adjusted_dV(self, dV_out=2500): # dV_out - delta V to exit atmosphere, 2500 is kerbins
         """
-        Calculates the true delta-V present in the rocket, by adjusting for the total required for leaving the atmosphere. 
+        Calculates the true delta-V present in the rocket, by adjusting for the total required for leaving atmosphere. 
 
         Parameters
             ----------
@@ -899,7 +899,7 @@ class Rocket:
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             loc : `{'atm', 'vac'}`
                 Location where the method will be performed.
 
@@ -916,12 +916,12 @@ class Rocket:
 
     def calculate_twr(self, stage_num,g=9.81,loc='atm'):
         """
-        Calculates the thrust o weight ratio of the rocket for a given stage. 
+        Calculates the thrust to weight ratio of the rocket for a given stage. 
 
         Parameters
             ----------
             stage_num : `int`
-                Stage to be analysed.
+                Stage to be analyzed.
             g : `float`
                 Gravity (default for Kerbin).
             loc : `{'atm', 'vac'}`
@@ -942,7 +942,7 @@ class Rocket:
 
     def generate_report(self, g=9.81):
         """
-        Prints a report with the most important informations of a rocket. 
+        Print a report with the most important informations of a rocket. 
 
         Parameters
             ----------
