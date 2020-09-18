@@ -12,7 +12,7 @@ pip install KSPython
 
 ## Design Goals
 
-KSPython was developed to be friendly to people new to python, and who are still learning the language. While also providing a powerful tool to help experience users make fast designs.
+KSPython was developed to be friendly to people new to python, and who are still learning the language. While also providing a powerful tool to help experienced users make fast designs.
 
 I also envision this tool to be connected with optimization and plotting tools in the future in order to provide even more usability.
 
