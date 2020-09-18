@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="KSPython", # Replace with your own username
-    version="0.1.0",
+    version="0.1.1",
     author="Luiz Frederico Villalobos",
     author_email="luizf.villalobos@gmail.com",
     description="A package made for plan and develop rockets in KSP",

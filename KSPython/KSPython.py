@@ -216,8 +216,11 @@ class Stage:
         Prints all parts present in a stage.
 
         """
+        parts_dict = defaultdict(int)
         for part in self.parts:
-            print(part.name)
+            parts_dict[part] +=1
+        for part in parts_dict:
+            print(f'{part.name}: {parts_dict[part]}')
 
     # def remove_part(self):
     #     pass
