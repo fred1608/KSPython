@@ -2,6 +2,9 @@
 
 This is a library called KSPython, made to help people design Kerbal Space Program rockets. It features quick to use syntax for prototyping and simulations. 
 
+## Documentation
+
+Full documentation of functions can be found at: https://kspython.readthedocs.io/en/latest/
 
 ## Installation
 
